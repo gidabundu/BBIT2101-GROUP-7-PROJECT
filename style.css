@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #02101a, #000000);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.form-div, .view-container {
+    background: #fff;
+    padding: 35px;
+    width: 450px; /* Increased for forms */
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.view-container {
+    max-width: 90%;
+    width: 1000px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #000814;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0 15px;
+    border: 1px solid #bbb;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background: #000814;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background: #001d3d;
+}
+
+/* Table Styles for View Pages */
+.view-container table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.view-container th, .view-container td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+.view-container th {
+    background-color: #f2f2f2;
+    color: #000814;
+}
+.view-container a {
+    text-decoration: none;
+    color: #001d3d;
+    font-weight: bold;
+}
+.view-container a:hover {
+    color: #e63946;
+}
+
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}

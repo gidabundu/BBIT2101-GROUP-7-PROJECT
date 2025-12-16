@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bah Football Agency - Premier Player Representation</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    scroll-behavior: smooth;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Header */
+header {
+    background-color: #1a1a2e; /* Deep Blue */
+    color: white;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo div {
+    width: 50px;
+    height: 50px;
+    background-color: #e63946; /* Red Accent */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo span {
+    color: #e63946;
+}
+
+/* Navigation */
+nav ul {
+    display: flex;
+    list-style: none;
+    transition: max-height 0.3s ease-in-out;
+}
+
+nav ul li {
+    margin-left: 25px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #e63946;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e63946;
+    transition: width 0.3s;
+}
+
+nav ul li a:hover::after,
+nav ul li a.active::after {
+    width: 100%;
+}
+
+/* Mobile Menu */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    /* Assuming you have a 'photo/download.jpg' file */
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('pics/download (5).jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 120px 0;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #e63946;
+    color: white;
+    padding: 12px 30px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background-color: #d62839;
+}
+
+/* Standard Section Padding */
+section {
+    padding: 80px 0;
+}
+
+/* About Section */
+.about {
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.about h2, .players h2 {
+    font-size: 2.5rem;
+    color: #1a1a2e;
+    margin-bottom: 20px;
+}
+
+.about p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Services Section */
+.services-section {
+    text-align: center;
+}
+.services-section h2 {
+    margin-bottom: 50px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.service-card {
+    background: white;
+    border-radius: 5px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    color: #1a1a2e;
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    color: #e63946;
+    margin-bottom: 15px;
+}
+
+/* Players Section */
+.players {
+    text-align: center;
+}
+
+.players h2 {
+    margin-bottom: 50px;
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.player-card {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+}
+
+.player-card:hover {
+    transform: translateY(-5px);
+}
+
+.player-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.player-card-info {
+    padding: 15px;
+}
+
+.player-card h3 {
+    margin: 0 0 5px;
+    color: #1a1a2e;
+}
+
+.player-card p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1a2e;
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #e63946;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+}
+
+.footer-section p,
+.footer-section ul li {
+    color: #ccc;
+    font-size: 0.95rem;
+    line-height: 1.8;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #e63946;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    transition: background-color 0.3s;
+}
+
+.social-links a:hover {
+    background-color: #e63946;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .services-grid, .player-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .logo {
+        margin-bottom: 15px;
+    }
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+    }
+    nav ul.active {
+        max-height: 500px; /* Adjust as needed */
+    }
+    nav ul li {
+        margin: 10px 0;
+    }
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .services-grid, .player-grid {
+        grid-template-columns: 1fr;
+    }
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="container header-container">
+        <div class="logo">
+            <div>BFA</div>
+            <h1>Bah<span>Football</span>Agency</h1>
+        </div>
+        <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+        <nav>
+            <ul id="main-nav">
+                <li><a class="navlink active" href="#home">Home</a></li>
+                <li><a class="navlink" href="#about">About</a></li>
+                <li><a class="navlink" href="#services">Services</a></li>
+                <li><a class="navlink" href="#players">Players</a></li>
+                <li><a class="navlink" href="#contact">Contact</a></li>
+                <li><a href="login.php">Admin Login</a></li> 
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="hero" id="home">
+    <div class="container">
+        <h2>Premier Football Representation</h2>
+        <p>Connecting elite talent with global opportunities through expert negotiation and career management.</p>
+        <a href="#services" class="btn">Discover Our Services</a>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Bah Football Agency is dedicated to representing elite football talent worldwide. We provide comprehensive career management, strategic contract negotiation, and transfer support to help players reach their full potential on and off the pitch. Our commitment is to our clients' success and well-being.</p>
+    </div>
+</section>
+
+<section class="services-section" id="services">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">⚖</div>
+                <h3>Contract Negotiation</h3>
+                <p>Maximizing player value through strategic contract discussions with clubs worldwide, ensuring fair and rewarding terms.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔄</div>
+                <h3>Transfer Management</h3>
+                <p>Facilitating smooth, seamless, and strategic transitions between clubs, always prioritizing the player's career trajectory.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Career Development</h3>
+                <p>Strategic planning for long-term success, including training, brand building, and post-career financial advice.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="players" id="players">
+    <div class="container">
+        <h2>Our Players</h2>
+        <div class="player-grid">
+            <div class="player-card">
+                <img src="pics/download (1).jpg" alt="Musa Kamara">
+                <div class="player-card-info">
+                    <h3>Musa Kamara</h3>
+                    <p>Forward - FC Johansen</p>
+                </div>
+            </div>
+            <div class="player-card">
+                <img src="pics/download (4).jpg" alt="Abdul Karim">
+                <div class="player-card-info">
+                    <h3>Abdul Karim</h3>
+                    <p>Midfielder - Blackpool FC</p>
+                </div>
+            </div>
+            <div class="player-card">
+                <img src="pics/download (3).jpg" alt="Sulaiman Bangura">
+                <div class="player-card-info">
+                    <h3>Sulaiman Bangura</h3>
+                    <p>Defender - East End Lions FC</p>
+                </div>
+            </div>
+        </div>
+        <p style="margin-top: 30px; font-style: italic; color: #555;">View our full roster by contacting us below.</p>
+    </div>
+</section>
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p><strong>Address:</strong> 27A Main Motor Road Congo Cross, Freetown, Sierra Leone</p>
+                <p><strong>Phone:</strong> +232 78705304</p>
+                <p><strong>Email:</strong> info@blingstonfootballagency.com</p>
+                <p>We are available 24/7 for our players.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Our Services</a></li>
+                    <li><a href="#players">Players</a></li>
+                    <li><a href="login.php">Admin Login</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <p>Follow us on social media for the latest transfers and agency news.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Twitter">🐦</a>
+                    <a href="#" aria-label="Facebook">📘</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="LinkedIn">💼</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2025 Bah Football Agency. All rights reserved. | Developed by BBIT2101 Students.
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Get the navigation element and the button
+    const mainNav = document.getElementById('main-nav');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    // Toggle mobile menu visibility
+    mobileMenuBtn.addEventListener('click', function() {
+        mainNav.classList.toggle('active');
+    });
+
+    // Smooth Scrolling and Active Link logic
+    document.querySelectorAll('.navlink').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            // Close mobile menu if open
+            mainNav.classList.remove('active');
+
+            // Update active link class
+            document.querySelectorAll('nav a.navlink').forEach(link => {
+                link.classList.remove('active');
+            });
+            this.classList.add('active');
+            
+            // Smooth scroll to target
+            window.scrollTo({
+                top: targetElement.offsetTop - (targetId === '#home' ? 0 : document.querySelector('header').offsetHeight),
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Update active navigation link on scroll (for desktop)
+    window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section');
+        const headerHeight = document.querySelector('header').offsetHeight;
+        
+        let current = '';
+        
+        sections.forEach(section => {
+            // Check if the section ID exists
+            if (section.getAttribute('id')) {
+                const sectionTop = section.offsetTop - headerHeight - 1; 
+                if(window.scrollY >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            }
+        });
+        
+        document.querySelectorAll('nav a.navlink').forEach(link => {
+            link.classList.remove('active');
+            if(link.getAttribute('href').slice(1) === current) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
